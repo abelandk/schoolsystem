@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.springpractice.schoolsystem.entities.Students;
 import com.springpractice.schoolsystem.services.StudentsServices;
 
 @Controller
@@ -22,11 +23,32 @@ public class StudentController {
 		return "students";
 	}
 	
-	@PostMapping("/student")
-	public String student(@ModelAttribute(value="id") int id, Model model) {
+	@PostMapping("/studentapi")
+	public String studentFromAPI(@ModelAttribute(value="id") int id, Model model) {
 		
 		model.addAttribute("students", services.getStudent(id));
 		return "students";
+	}
+	
+	@PostMapping("/studentRegistration")
+	public String student(Students student, Model model) {
+		
+		// TODO add student to database;
+		return "students";
+	}
+	
+	@PostMapping("/student")
+	public String student(int id, Model model) {
+		
+		model.addAttribute("students", services.getStudent(id));
+		return "students";
+	}
+	
+	@GetMapping("/index")
+	public String index(Model model) {
+		
+		model.addAttribute("students", new Students());
+		return "index";
 	}
 	
 	
