@@ -21,20 +21,20 @@ public class Students {
 	@Column(name="last_name")
 	private String lastName;
 	
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
 	public Students() {
 		
 	}
 
 	public Students(String firstName) {
 		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public int getId() {

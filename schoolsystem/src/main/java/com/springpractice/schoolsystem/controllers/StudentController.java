@@ -41,7 +41,6 @@ public class StudentController {
 	public String student(Students student, Model model) {
 		
 		int studentId = services.addStudent(student);
-		System.out.println("********************" + studentId);
 		model.addAttribute("students", services.getStudent(studentId));
 		return "students";
 	}
