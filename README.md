@@ -1,2 +1,2 @@
 # schoolsystem
-![alt text](schoolsystem/schoolsystem/src/main/resources/other/relationshipDiagram.png)
+![alt text](schoolsystem/src/main/resources/other/relationshipDiagram.png)
