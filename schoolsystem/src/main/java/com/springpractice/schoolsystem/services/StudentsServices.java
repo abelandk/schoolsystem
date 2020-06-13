@@ -10,4 +10,6 @@ public interface StudentsServices {
 
 	public Students getStudent(int id);
 
+	public int addStudent(Students student);
+
 }

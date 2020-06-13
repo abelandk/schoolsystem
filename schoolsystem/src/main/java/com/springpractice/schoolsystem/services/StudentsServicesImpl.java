@@ -29,4 +29,10 @@ public class StudentsServicesImpl implements StudentsServices {
 		return dao.getStudents(id);
 	}
 
+	@Override
+	@Transactional
+	public int addStudent(Students student) {
+		return dao.addStudent(student);
+	}
+
 }

@@ -30,10 +30,19 @@ public class StudentController {
 		return "students";
 	}
 	
+	@GetMapping("/studentRegistrationForm")
+	public String student(Model model) {
+		
+		model.addAttribute("student", new Students());
+		return "student-registration-form";
+	}
+	
 	@PostMapping("/studentRegistration")
 	public String student(Students student, Model model) {
 		
-		// TODO add student to database;
+		int studentId = services.addStudent(student);
+		System.out.println("********************" + studentId);
+		model.addAttribute("students", services.getStudent(studentId));
 		return "students";
 	}
 	
@@ -45,9 +54,7 @@ public class StudentController {
 	}
 	
 	@GetMapping("/index")
-	public String index(Model model) {
-		
-		model.addAttribute("students", new Students());
+	public String index() {
 		return "index";
 	}
 	

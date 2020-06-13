@@ -1,5 +1,6 @@
 package com.springpractice.schoolsystem.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,14 +15,26 @@ public class Students {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	private String name;
+	@Column(name="first_name")
+	private String firstName;
 	
+	@Column(name="last_name")
+	private String lastName;
+	
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
 	public Students() {
 		
 	}
 
-	public Students(String name) {
-		this.name = name;
+	public Students(String firstName) {
+		this.firstName = firstName;
 	}
 
 	public int getId() {
@@ -32,17 +45,17 @@ public class Students {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
 	@Override
 	public String toString() {
-		return "Students [id=" + id + ", name=" + name + "]";
+		return "Students [id=" + id + ", name=" + firstName + "]";
 	}
 	
 

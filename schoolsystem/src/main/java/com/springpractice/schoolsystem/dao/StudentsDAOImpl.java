@@ -42,4 +42,13 @@ public class StudentsDAOImpl implements StudentsDAO {
 		return student.getSingleResult();
 	}
 
+	@Override
+	@Transactional
+	public int addStudent(Students student) {
+		
+		Session session = entityManager.unwrap(Session.class);
+		session.save(student);
+		return student.getId();
+	}
+
 }

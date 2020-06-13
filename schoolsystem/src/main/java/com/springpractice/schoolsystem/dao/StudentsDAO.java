@@ -10,4 +10,6 @@ public interface StudentsDAO {
 
 	public Students getStudents(int id);
 
+	public int addStudent(Students student);
+
 }
