@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+	
+	<div align="center">
+	
+		<p th:text="'Welcome '  + ${student.firstName} + '  ' + ${student.lastName}"></p>
+		<h4> Register For A Course </h4>
+		<div>
+			<form th:action="@{/studentCourseRegistration}" method="post">
+				<select th:field="*{courses}" name = "id" id="id">
+					<option value="0">select course</option>
+					<option th:each="course : ${courses}"
+							th:value="${course.id}"
+							th:text="${course.code} + ' : ' + ${course.name}">
+					</option>
+				</select>
+				<br>
+				<input type="submit" value="Register" />
+			</form>
+		</div>
+		
+	</div>
+	
+</body>
+
+</html>

@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.springpractice.schoolsystem.entities.Courses;
 import com.springpractice.schoolsystem.entities.Students;
 import com.springpractice.schoolsystem.services.CoursesServices;
 import com.springpractice.schoolsystem.services.StudentsServices;
@@ -56,6 +55,13 @@ public class StudentController {
 		model.addAttribute("student", studentService.getStudent(id));
 		model.addAttribute("courses", courseService.getCourses());
 		return "student";
+	}
+	
+	@PostMapping("/studentCourseRegistration")
+	public String studentx(@ModelAttribute(value="id") int id, Model model) {
+		//TODO
+		//System.out.println("*********" + id);
+		return "index";
 	}
 	
 	@GetMapping("/index")
