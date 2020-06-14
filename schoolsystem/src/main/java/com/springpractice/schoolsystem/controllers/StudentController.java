@@ -7,26 +7,31 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.springpractice.schoolsystem.entities.Courses;
 import com.springpractice.schoolsystem.entities.Students;
+import com.springpractice.schoolsystem.services.CoursesServices;
 import com.springpractice.schoolsystem.services.StudentsServices;
 
 @Controller
 public class StudentController {
 	
 	@Autowired
-	public StudentsServices services;
+	public StudentsServices studentService;
+	
+	@Autowired
+	public CoursesServices courseService;
 	
 	@GetMapping("/students")
 	public String students(Model model) {
 		
-		model.addAttribute("students", services.getStudents());
+		model.addAttribute("students", studentService.getStudents());
 		return "students";
 	}
 	
 	@PostMapping("/studentapi")
 	public String studentFromAPI(@ModelAttribute(value="id") int id, Model model) {
 		
-		model.addAttribute("students", services.getStudent(id));
+		model.addAttribute("students", studentService.getStudent(id));
 		return "students";
 	}
 	
@@ -40,16 +45,17 @@ public class StudentController {
 	@PostMapping("/studentRegistration")
 	public String student(Students student, Model model) {
 		
-		int studentId = services.addStudent(student);
-		model.addAttribute("students", services.getStudent(studentId));
+		int studentId = studentService.addStudent(student);
+		model.addAttribute("students", studentService.getStudent(studentId));
 		return "students";
 	}
 	
 	@PostMapping("/student")
 	public String student(int id, Model model) {
 		
-		model.addAttribute("students", services.getStudent(id));
-		return "students";
+		model.addAttribute("student", studentService.getStudent(id));
+		model.addAttribute("courses", courseService.getCourses());
+		return "student";
 	}
 	
 	@GetMapping("/index")
