@@ -8,8 +8,8 @@
 		<p th:text="'Welcome '  + ${student.firstName} + '  ' + ${student.lastName}"></p>
 		<h4> Register For A Course </h4>
 		<div>
-			<form th:action="@{/studentCourseRegistration}" method="post">
-				<select th:field="*{courses}" name = "id" id="id">
+			<form th:action="@{/studentCourseRegistration}" th:object="${selectedCourses}" th:method="post">
+				<select th:field="*{id}" name = "id" id="id">
 					<option value="0">select course</option>
 					<option th:each="course : ${courses}"
 							th:value="${course.id}"
