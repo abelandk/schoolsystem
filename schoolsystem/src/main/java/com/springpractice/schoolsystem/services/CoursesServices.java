@@ -3,6 +3,7 @@ package com.springpractice.schoolsystem.services;
 import java.util.List;
 
 import com.springpractice.schoolsystem.entities.Courses;
+import com.springpractice.schoolsystem.entities.Students;
 
 public interface CoursesServices {
 
@@ -12,4 +13,8 @@ public interface CoursesServices {
 		setCourse(course.getCode(), course.getName());
 	}
 	public void setCourse(String code, String name);
+	
+	public List<Students> getStudents(int course_id);
+	
+	public void setStudent(int course_id, Students student);
 }

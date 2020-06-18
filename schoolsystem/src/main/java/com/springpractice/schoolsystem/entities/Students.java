@@ -1,5 +1,6 @@
 package com.springpractice.schoolsystem.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -72,6 +73,14 @@ public class Students {
 
 	public void setCourses(List<Courses> courses) {
 		this.courses = courses;
+	}
+	
+	public void setCourses(Courses course) {
+		if(this.courses.isEmpty()) {
+			this.courses = new ArrayList<>();
+		}
+		
+		this.courses.add(course);		
 	}
 	
 	@Override

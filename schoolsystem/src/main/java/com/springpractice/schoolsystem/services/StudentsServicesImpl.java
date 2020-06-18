@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.springpractice.schoolsystem.dao.StudentsDAO;
+import com.springpractice.schoolsystem.entities.Courses;
 import com.springpractice.schoolsystem.entities.Students;
 
 @Service
@@ -33,6 +34,19 @@ public class StudentsServicesImpl implements StudentsServices {
 	@Transactional
 	public int addStudent(Students student) {
 		return dao.addStudent(student);
+	}
+
+	@Override
+	@Transactional
+	public List<Courses> getCourses(int student_id) {
+		return dao.getCourses(student_id);
+	}
+
+	@Override
+	@Transactional
+	public void setCourse(int student_id, Courses course) {
+		dao.setCourse(student_id, course);
+		
 	}
 
 }

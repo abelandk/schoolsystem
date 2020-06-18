@@ -5,7 +5,7 @@
 	
 	<div align="center">
 	
-		<p th:text="'Welcome '  + ${student.firstName} + '  ' + ${student.lastName}"></p>
+		<p th:name = "student" th:id th:value = "${student.id}" th:text="'Welcome '  + ${student.firstName} + '  ' + ${student.lastName}"></p>
 		<h4> Register For A Course </h4>
 		<div>
 			<form th:action="@{/studentCourseRegistration}" th:object="${selectedCourses}" th:method="post">
@@ -16,11 +16,20 @@
 							th:text="${course.code} + ' : ' + ${course.name}">
 					</option>
 				</select>
-				<br>
+				<input th:hidden="true" th:name="student_id" th:value="${student.id}"/>
 				<input type="submit" value="Register" />
 			</form>
 		</div>
-		
+		<div align="center">
+		<h4> Registered Courses </h4>
+		<table>
+			<th:block  th:each="courses : ${registeredCourses}">
+				<tr>
+			         <td th:text="${courses.code} + '  ' + ${courses.name}" />
+		      	</tr>
+			</th:block>
+		</table>
+		</div>
 	</div>
 	
 </body>

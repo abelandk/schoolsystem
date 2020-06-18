@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.springpractice.schoolsystem.dao.CoursesDAO;
 import com.springpractice.schoolsystem.entities.Courses;
+import com.springpractice.schoolsystem.entities.Students;
 
 @Service
 public class CoursesServicesImpl implements CoursesServices {
@@ -34,6 +35,18 @@ public class CoursesServicesImpl implements CoursesServices {
 	public void setCourse(String code, String name) {
 
 		dao.setCourse(code, name);
+	}
+
+	@Override
+	public List<Students> getStudents(int course_id) {
+
+		return dao.getStudents(course_id);
+	}
+
+	@Override
+	public void setStudent(int course_id, Students student) {
+
+		dao.setStudent(course_id, student);
 	}
 
 }

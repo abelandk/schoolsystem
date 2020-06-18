@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.springpractice.schoolsystem.entities.Courses;
+import com.springpractice.schoolsystem.entities.Students;
 
 @Repository
 public class CoursesDAOImpl implements CoursesDAO {
@@ -41,6 +42,25 @@ public class CoursesDAOImpl implements CoursesDAO {
 	public void setCourse(String code, String name) {
 		session = em.unwrap(Session.class);
 		session.save(new Courses(code, name));
+	}
+
+	@Override
+	@Transactional
+	public List<Students> getStudents(int course_id) {
+		
+		session = em.unwrap(Session.class);
+		Courses course = session.get(Courses.class, course_id);
+		
+		return course.getStudents();
+	}
+
+	@Override
+	@Transactional
+	public void setStudent(int course_id, Students student) {
+		
+		session = em.unwrap(Session.class);
+		Courses course = session.get(Courses.class, course_id);
+		course.setStudent(student);
 	}
 
 }

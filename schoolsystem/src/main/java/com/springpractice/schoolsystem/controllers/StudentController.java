@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.springpractice.schoolsystem.entities.Courses;
 import com.springpractice.schoolsystem.entities.Students;
@@ -51,18 +52,28 @@ public class StudentController {
 	}
 	
 	@PostMapping("/student")
-	public String student(int id, Model model, 
+	public String student(@RequestParam("id") int id, Model model, 
 			@ModelAttribute("selectedCourses") Courses courses) {
 		
 		model.addAttribute("student", studentService.getStudent(id));
 		model.addAttribute("courses", courseService.getCourses());
+		model.addAttribute("registeredCourses", studentService.getCourses(id));
 		return "student";
 	}
 	
 	@PostMapping("/studentCourseRegistration")
-	public String studentx(@ModelAttribute Courses courses) {
-		System.out.println("*********" + courses.getId());
-		return "index";
+	public String studentx(@RequestParam("id") int cId,
+			@RequestParam("student_id") int sId,
+			Model model,
+			@ModelAttribute("selectedCourses") Courses courses) {
+
+		studentService.setCourse(sId, courseService.getCourse(cId));
+
+		model.addAttribute("student", studentService.getStudent(sId));
+		model.addAttribute("courses", courseService.getCourses());
+		model.addAttribute("registeredCourses", studentService.getCourses(sId));
+
+		return "student";
 	}
 	
 	@GetMapping("/index")
