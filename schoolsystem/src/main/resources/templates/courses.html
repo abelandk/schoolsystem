@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.com">
 	<head>
+		<!-- Required meta tags -->
+    	<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    	<!-- Bootstrap CSS -->
+   		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
 		<title>Courses List</title>
 	</head>
 <body>
 
 	<div align="center">
-		<table>
-			<th:block th:each="course: ${courses}">
-				<tr>
-					<td th:text="${course.code} + ' : ' + ${course.name}"/>
-				</tr>
-			</th:block>
-		</table>
+		<ul class="list-group" th:each="course : ${courses}">
+			<li class="list-group-item"
+				th:text="${course.code} + '  ' + ${course.name}"></li>
+		</ul>
 	</div>
 </body>
 </html>

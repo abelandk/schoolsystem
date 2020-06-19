@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
-		<meta charset="ISO-8859-1">
+		<!-- Required meta tags -->
+    	<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    	<!-- Bootstrap CSS -->
+   		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
 		<title>Welcome page</title>
 	</head>
 <body>
-	<div align="center">
-	    <form th:action="@{/student}" method="post">
-	    	<p> Id : <input type="number" name="id"/> </p>
-	    	<input type="submit" value="Submit" />
+	<div class="container" align="center">
+	    <form class="form-group" th:action="@{/student}" method="post">
+	    	<label>Id</label>
+	    	<input class="col-xs-2 form-control" type="number" name="id"/>
+	    	<input class="btn btn-default" type="submit" value="Submit" />
 	    </form>
 	    
 	    <h4> <a th:href="@{/studentRegistrationForm}">Register Students</a></h4>

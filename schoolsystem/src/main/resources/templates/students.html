@@ -2,20 +2,24 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 	<head>
+		<!-- Required meta tags -->
+    	<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    	<!-- Bootstrap CSS -->
+   		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
 		<title> Welcome Students </title>
 	</head>
 	
 	<body>
 	
 	<div align="center">
-		<h4> Welcome Students </h4>
-		<table>
-			<th:block  th:each="student : ${students}">
-				<tr>
-			         <td th:text="${student.firstName} + '  ' + ${student.lastName}" />
-		      	</tr>
-			</th:block>
-		</table>
+		<h4>Welcome Students</h4>
+		<ul class="list-group" th:each="student : ${students}">
+			<li class="list-group-item"
+				th:text="${student.firstName} + '  ' + ${student.lastName}"></li>
+		</ul>
 	</div>
 	</body>
 </html>
