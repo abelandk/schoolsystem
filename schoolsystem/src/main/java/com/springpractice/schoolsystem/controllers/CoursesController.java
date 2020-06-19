@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.springpractice.schoolsystem.entities.Courses;
@@ -30,10 +31,11 @@ public class CoursesController {
 	}
 	
 	@PostMapping("/courseRegistration")
-	public String course(Courses course, Model model) {
+	public String course(@ModelAttribute("course") Courses course, Model model) {
 		services.setCourse(course);
-		model.addAttribute("courses", services.getCourses());
-		return "courses";
+		
+		// redirect is done to avoid duplicate entry during reload
+		return "redirect:/courses";
 	}
 	
 }
