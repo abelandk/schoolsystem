@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+		<title>Insert title here</title>
+	</head>
+<body>
+	<div class="container">
+		<ul class="list-group" th:each="teacher : ${teachers}">
+			<li class="list-group-item col-4" th:text="${teacher.firstName} + ' ' + ${teacher.lastName}"></li>
+		
+		</ul>
+	</div>
+</body>
+</html>

@@ -38,9 +38,9 @@ public class StudentsDAOImpl implements StudentsDAO {
 	public Students getStudents(int id) {
 		
 		Session session = entityManager.unwrap(Session.class);
-		Query<Students> student = session.createQuery("from Students where id=" + id, Students.class);
+		Students student = session.get(Students.class, id);
 		
-		return student.getSingleResult();
+		return student;
 	}
 
 	@Override

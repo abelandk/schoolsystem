@@ -33,8 +33,8 @@ public class CoursesDAOImpl implements CoursesDAO {
 	@Transactional
 	public Courses getCourse(int id) {
 		session = em.unwrap(Session.class);
-		Query<Courses> course = session.createQuery("from Courses where id= " + id, Courses.class);
-		return course.getSingleResult();
+		Courses course = session.get(Courses.class, id);
+		return course;
 	}
 
 	@Override

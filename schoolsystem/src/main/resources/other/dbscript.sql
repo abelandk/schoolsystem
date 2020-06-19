@@ -27,7 +27,7 @@ CREATE TABLE `courses` (
   `code` varchar(45) DEFAULT NULL,
   `name` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,7 +36,7 @@ CREATE TABLE `courses` (
 
 LOCK TABLES `courses` WRITE;
 /*!40000 ALTER TABLE `courses` DISABLE KEYS */;
-INSERT INTO `courses` VALUES (1,'CS201','Introduction to Computer Science'),(2,NULL,NULL);
+INSERT INTO `courses` VALUES (1,'CS200','Introduction To Computer Sceience'),(3,'CS211','Algorithm and Data structures'),(5,'CS301','Database'),(6,'CS401','Introduction to OOP'),(7,'M501','Applied Mathematics'),(8,'CS501','MAchine Learning'),(9,'CS601','Spring Boot-Java');
 /*!40000 ALTER TABLE `courses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -63,6 +63,7 @@ CREATE TABLE `student_course` (
 
 LOCK TABLES `student_course` WRITE;
 /*!40000 ALTER TABLE `student_course` DISABLE KEYS */;
+INSERT INTO `student_course` VALUES (1,1),(2,1),(1,3),(2,5),(3,7);
 /*!40000 ALTER TABLE `student_course` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -87,7 +88,7 @@ CREATE TABLE `students` (
 
 LOCK TABLES `students` WRITE;
 /*!40000 ALTER TABLE `students` DISABLE KEYS */;
-INSERT INTO `students` VALUES (1,'ab',NULL),(2,'cd',NULL),(3,'ef',NULL),(4,'Abel','Yohannes'),(5,'John','Tebebe'),(6,'John','Tebebe'),(7,NULL,NULL),(8,NULL,NULL),(9,NULL,NULL),(10,NULL,NULL);
+INSERT INTO `students` VALUES (1,'Leul','Gebre'),(2,'Jonas','Ericsson'),(3,'Janet','Deng'),(4,'Abel','Yohannes'),(5,'John','Tebebe'),(6,'Sven-Eric','Ericsson');
 /*!40000 ALTER TABLE `students` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -150,4 +151,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-06-17 22:34:16
+-- Dump completed on 2020-06-19 15:40:32
