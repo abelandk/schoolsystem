@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.springpractice.schoolsystem.entities.Courses;
 import com.springpractice.schoolsystem.entities.Teachers;
 
 @Repository
@@ -43,6 +44,24 @@ public class TeachersDAOImpl implements TeachersDAO {
 		
 		session= em.unwrap(Session.class);
 		session.save(teacher);
+	}
+
+	@Override
+	@Transactional
+	public List<Courses> getCourses(int id) {
+		
+		session = em.unwrap(Session.class);
+		Teachers teacher = session.get(Teachers.class, id);
+		return teacher.getCourses();
+	}
+
+	@Override
+	@Transactional
+	public void setCourses(Courses course, int id) {
+		
+		session = em.unwrap(Session.class);
+		Teachers teacher = session.get(Teachers.class, id);
+		teacher.setCourses(course);
 	}
 
 }

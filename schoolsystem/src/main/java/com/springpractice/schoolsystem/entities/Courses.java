@@ -31,6 +31,13 @@ public class Courses {
 			)
 	private List<Students> students;
 	
+	@ManyToMany
+	@JoinTable(
+			name = "teacher_course",
+			joinColumns = @JoinColumn(name = "course_id"),
+			inverseJoinColumns = @JoinColumn(name = "teacher_id"))
+	private List<Teachers> teachers;
+	
 	public Courses() {
 
 	}
@@ -79,6 +86,23 @@ public class Courses {
 		}
 		
 		this.students.add(student);
+	}
+
+	public List<Teachers> getTeachers() {
+		return teachers;
+	}
+
+	public void setTeachers(List<Teachers> teachers) {
+		this.teachers = teachers;
+	}
+	
+	public void setTeacher(Teachers teachers) {
+		
+		if(this.teachers.isEmpty()) {
+			this.teachers = new ArrayList<>();
+		}
+		
+		this.teachers.add(teachers);
 	}
 
 }

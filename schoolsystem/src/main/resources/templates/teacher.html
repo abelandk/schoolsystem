@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+		<title>Insert title here</title>
+	</head>
+<body>
+	<div class="container" align="center">
+		<p th:text="Welcome + '  ' + ${teacher.firstName} + '  ' + ${teacher.lastName}"></p>
+		<form class="form-group" th:action="@{/registerCourse}"
+				th:object="${selectCourses}" method="post">
+				
+			<select class="form-control mb-4 col-4" th:field="*{id}">
+				<option value="0"> Select Course </option>
+				<option th:each="course : ${courses}"
+						th:value="${course.id}"
+						th:text="${course.code} + ' : ' + ${course.name}">
+				</option>
+			</select>
+			<input class="btn btn-info col-2" th:hidden="true" 
+			th:name="teacher_id" th:value="${teacher.id}"/>
+			<input class="form-control mb-4 col-2" type="submit" value="Register" />
+		</form>
+	</div>
+
+	<div align="center">
+		<h4>Registered Courses</h4>
+		<ul class="list-group" th:each="courses : ${registeredCourses}">
+			<li class="list-group-item"
+				th:text="${courses.code} + '  ' + ${courses.name}"></li>
+		</ul>
+	</div>
+</body>
+</html>

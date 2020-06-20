@@ -13,9 +13,14 @@
 <body>
 	<div class="container" align="center">
 	    <form class="form-group" th:action="@{/student}" method="post">
-	    	<label>Id</label>
+	    	<label>Student Id</label>
 	    	<input class=" form-control mb-4 col-4" type="number" name="id"/>
-	    	<input class="btn btn-info col-2" type="submit" value="Submit" />
+	    	<input class="btn btn-info col-2" type="submit" value="Search Student" />
+	    </form>
+	    <form class="form-group" th:action="@{/teacher}" method="post">
+	    	<label>Teacher Id</label>
+	    	<input class=" form-control mb-4 col-4" type="number" name="id"/>
+	    	<input class="btn btn-info col-2" type="submit" value="Search Teacher" />
 	    </form>
 	    
 	    <h4> <a th:href="@{/studentRegistrationForm}">Register Students</a></h4>
