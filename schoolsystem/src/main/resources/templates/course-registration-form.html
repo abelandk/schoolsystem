@@ -13,7 +13,7 @@
 </head>
 <body>
 	<div class="container" align="center">
-		<form th:action="@{/courseRegistration}" th:object="${course}" method="post">
+		<form th:action="@{/course/courseRegistration}" th:object="${course}" method="post">
 			<div class="form-group">
 				<label>Course Code</label>
 				<input  class="form-control mb-4 col-4" type="text" th:field="*{code}"/>

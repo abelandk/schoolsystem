@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<!-- Required meta tags -->
+    	<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    	<!-- Bootstrap CSS -->
+   		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+		<title>Welcome page</title>
+	</head>
+<body>
+	<div class="container" align="center">
+	    <form class="form-group" th:action="@{/student}" method="post">
+	    	<label>Student Id</label>
+	    	<input class=" form-control mb-4 col-4" type="number" name="id"/>
+	    	<input class="btn btn-info col-2" type="submit" value="Search Student" />
+	    </form>
+	    <form class="form-group" th:action="@{/teacher}" method="post">
+	    	<label>Teacher Id</label>
+	    	<input class=" form-control mb-4 col-4" type="number" name="id"/>
+	    	<input class="btn btn-info col-2" type="submit" value="Search Teacher" />
+	    </form>
+	    
+	    <h4> <a th:href="@{/studentRegistrationForm}">Register Students</a></h4>
+	    <h4> <a th:href="@{/courseRegistrationForm}">Register Courses</a></h4>
+	    <h4> <a th:href="@{/courses}">Courses</a></h4>
+	    <h4> <a th:href="@{/students}">Students</a></h4>
+	    <h4> <a th:href="@{/teachers}">Teachers</a></h4>
+	    <h4> <a th:href="@{/registerTeachersForm}">Register Teachers</a></h4>
+	</div>
+</body>
+</html>

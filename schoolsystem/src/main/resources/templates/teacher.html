@@ -14,7 +14,7 @@
 <body>
 	<div class="container" align="center">
 		<p th:text="Welcome + '  ' + ${teacher.firstName} + '  ' + ${teacher.lastName}"></p>
-		<form class="form-group" th:action="@{/registerCourse}"
+		<form class="form-group" th:action="@{/teacher/registerCourse}"
 				th:object="${selectCourses}" method="post">
 				
 			<select class="form-control mb-4 col-4" th:field="*{id}">

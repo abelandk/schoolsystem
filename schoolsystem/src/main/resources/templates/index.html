@@ -12,23 +12,10 @@
 	</head>
 <body>
 	<div class="container" align="center">
-	    <form class="form-group" th:action="@{/student}" method="post">
-	    	<label>Student Id</label>
-	    	<input class=" form-control mb-4 col-4" type="number" name="id"/>
-	    	<input class="btn btn-info col-2" type="submit" value="Search Student" />
-	    </form>
-	    <form class="form-group" th:action="@{/teacher}" method="post">
-	    	<label>Teacher Id</label>
-	    	<input class=" form-control mb-4 col-4" type="number" name="id"/>
-	    	<input class="btn btn-info col-2" type="submit" value="Search Teacher" />
-	    </form>
-	    
-	    <h4> <a th:href="@{/studentRegistrationForm}">Register Students</a></h4>
-	    <h4> <a th:href="@{/courseRegistrationForm}">Register Courses</a></h4>
-	    <h4> <a th:href="@{/courses}">Courses</a></h4>
-	    <h4> <a th:href="@{/students}">Students</a></h4>
-	    <h4> <a th:href="@{/teachers}">Teachers</a></h4>
-	    <h4> <a th:href="@{/registerTeachersForm}">Register Teachers</a></h4>
+	   <h4> WELCOME TO THE SCHOOL SYSTEM</h4>
+        <form class="form-group" th:action="@{/logout}" method="post">
+            <input class="btn btn-info col-2" type="submit" value="Logout"/>
+        </form>
 	</div>
 </body>
 </html>

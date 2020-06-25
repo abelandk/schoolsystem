@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.springpractice.schoolsystem.entities.Courses;
@@ -14,6 +15,7 @@ import com.springpractice.schoolsystem.services.CoursesServices;
 import com.springpractice.schoolsystem.services.TeachersService;
 
 @Controller
+@RequestMapping("/teacher")
 public class TeachersController {
 
 	@Autowired
@@ -21,6 +23,12 @@ public class TeachersController {
 	
 	@Autowired
 	CoursesServices coureseServices;
+	
+	@GetMapping("/")
+	public String home() {
+		
+		return "redirect:/teacher/teachers";
+	}
 	
 	@GetMapping("/teachers")
 	public String getAllTeachers(Model model) {
