@@ -32,8 +32,11 @@ public class UserDAOImpl implements UserDAO {
 	public User getUser(String username) {
 		
 		session = em.unwrap(Session.class);
-		System.out.println("********* USERDAO*****");
-		Query<User> user = session.createQuery("from User where username = " + username, User.class);
+		Query<User> user = session.createQuery("FROM User U WHERE U.username = '" + username + "'", User.class);
+		
+		if(user.getResultList().size() < 1) {
+			return null;
+		}
 		return user.getSingleResult();
 	}
 

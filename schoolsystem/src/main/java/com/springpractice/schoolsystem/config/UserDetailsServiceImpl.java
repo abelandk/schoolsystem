@@ -17,12 +17,16 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		
+
 		User user = dao.getUser(username);
 		
-		UserDetailsImpl userDetails = new UserDetailsImpl(user);
-		
-		return userDetails;
+		if(user != null) {
+			UserDetailsImpl userDetails = new UserDetailsImpl(user);	
+			return userDetails;
+		}
+		else {
+			throw new UsernameNotFoundException("User with username=" + username + "not found");
+		}
 	}
 
 }

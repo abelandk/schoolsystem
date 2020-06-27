@@ -20,6 +20,7 @@ public class UserDetailsImpl implements UserDetails {
 	private User user;
 	
 	public UserDetailsImpl(User user) {
+
 		this.user = user;
 	}
 	
@@ -27,7 +28,7 @@ public class UserDetailsImpl implements UserDetails {
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 
 		List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
-		GrantedAuthority gAuthority = new SimpleGrantedAuthority("ROLE" + this.user.getRole());
+		GrantedAuthority gAuthority = new SimpleGrantedAuthority("ROLE_" + this.user.getRole());
 		grantedAuthorities.add(gAuthority);
 		
 		return grantedAuthorities;
@@ -48,25 +49,25 @@ public class UserDetailsImpl implements UserDetails {
 	@Override
 	public boolean isAccountNonExpired() {
 
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean isAccountNonLocked() {
 
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean isCredentialsNonExpired() {
 
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean isEnabled() {
 
-		return false;
+		return true;
 	}
 
 }
