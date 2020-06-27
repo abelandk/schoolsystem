@@ -28,8 +28,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		
 			.and() .formLogin() .loginPage("/login")
 			.loginProcessingUrl("/authenticateTheUser") //No need to write a controller for this url, 
-		  											  // spring provides it for free .permitAll() .and() .logout()
-			.and() 
+		  	.defaultSuccessUrl("/loginSucessful")										  // spring provides it for free .permitAll() .and() .logout()
+			
+		  	.and() 
 			.exceptionHandling()
 			.accessDeniedPage("/access-denied");
 	}

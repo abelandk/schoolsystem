@@ -10,11 +10,13 @@ public interface StudentsDAO {
 	public List<Students> getStudents();
 
 	public Students getStudents(int id);
+	
+	public Students getStudentByUser(int userId);
 
 	public int addStudent(Students student);
 	
-	public List<Courses> getCourses(int student_id);
+	public List<Courses> getCourses(int studentId);
 
-	public void setCourse(int student_id, Courses course);
+	public void setCourse(int studentId, Courses course);
 
 }

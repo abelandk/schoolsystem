@@ -49,4 +49,11 @@ public class StudentsServicesImpl implements StudentsServices {
 		
 	}
 
+	@Override
+	@Transactional
+	public Students getStudentByUser(int userId) {
+
+		return dao.getStudentByUser(userId);
+	}
+
 }

@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -35,6 +36,10 @@ public class Students {
 			)
 	private List<Courses> courses;
 	
+	@OneToOne
+	@JoinColumn(name="user_id")
+	private User user;
+
 	public Students() {
 		
 	}
@@ -81,6 +86,14 @@ public class Students {
 		}
 		
 		this.courses.add(course);		
+	}
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 	@Override

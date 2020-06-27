@@ -54,22 +54,30 @@ public class StudentsDAOImpl implements StudentsDAO {
 
 	@Override
 	@Transactional
-	public List<Courses> getCourses(int student_id) {
+	public List<Courses> getCourses(int studentId) {
 		
 		Session session = entityManager.unwrap(Session.class);
-		Students student = session.get(Students.class, student_id);
+		Students student = session.get(Students.class, studentId);
 
 		return student.getCourses();
 	}
 	
 	@Override
 	@Transactional
-	public void setCourse(int student_id, Courses course) {
+	public void setCourse(int studentId, Courses course) {
 		
 		Session session = entityManager.unwrap(Session.class);
-		Students student = session.get(Students.class, student_id);
+		Students student = session.get(Students.class, studentId);
 
 		student.setCourses(course);
+	}
+
+	@Override
+	@Transactional
+	public Students getStudentByUser(int userId) {
+		Session session = entityManager.unwrap(Session.class);
+		Query<Students> student = session.createQuery("from Students where user_id = " + userId, Students.class);
+		return student.getSingleResult();
 	}
 
 }

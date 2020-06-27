@@ -35,6 +35,10 @@
 					th:text="${courses.code} + '  ' + ${courses.name}"></li>
 			</ul>
 		</div>
+		<br> <br>
+		<form class="form-group" th:action="@{/logout}" method="post">
+            <input class="btn btn-info col-2" type="submit" value="Logout"/>
+        </form>
 	</div>
 	
 </body>
