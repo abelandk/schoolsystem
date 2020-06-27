@@ -10,8 +10,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 
 
 @Entity
@@ -34,6 +36,10 @@ public class Teachers {
 			joinColumns = @JoinColumn(name = "teacher_id"),
 			inverseJoinColumns = @JoinColumn(name = "course_id"))
 	private List<Courses> courses;
+	
+	@OneToOne
+	@JoinColumn(name = "user_id")
+	private User user;
 	
 	public Teachers() {
 	

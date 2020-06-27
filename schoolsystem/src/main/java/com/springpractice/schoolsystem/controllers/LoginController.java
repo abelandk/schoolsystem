@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.springpractice.schoolsystem.config.UserDetailsImpl;
 import com.springpractice.schoolsystem.entities.Courses;
 import com.springpractice.schoolsystem.entities.Students;
+import com.springpractice.schoolsystem.entities.Teachers;
 import com.springpractice.schoolsystem.services.CoursesServices;
 import com.springpractice.schoolsystem.services.StudentsServices;
+import com.springpractice.schoolsystem.services.TeachersService;
 
 @Controller
 public class LoginController {
@@ -23,6 +25,9 @@ public class LoginController {
 	
 	@Autowired
 	private CoursesServices courseService;
+	
+	@Autowired
+	private TeachersService teachersService;
 	
 	@GetMapping("/")
 	public String root() {
@@ -56,16 +61,32 @@ public class LoginController {
 
 	
 	  @GetMapping("/loginSucessful") 
-	  public String loginSucessful(Model model, @ModelAttribute("selectedCourses") Courses courses) {
+	  public String loginSucessful(Model model, @ModelAttribute("selectCourses") Courses courses) {
 		  Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		  UserDetailsImpl loggedinUser = (UserDetailsImpl)auth.getPrincipal();
-		  Students student = studentService.getStudentByUser(loggedinUser.getUser().getId());
 		  
-		  model.addAttribute("student", student);
-		  model.addAttribute("courses", courseService.getCourses());
-		  model.addAttribute("registeredCourses", studentService.getCourses(student.getId()));
-		  return "student";
-	  
+		  if(loggedinUser.getUser().getRole().equals("STUDENT"))
+		  {
+			  Students student = studentService.getStudentByUser(loggedinUser.getUser().getId());
+			  
+			  model.addAttribute("student", student);
+			  model.addAttribute("courses", courseService.getCourses());
+			  model.addAttribute("registeredCourses", studentService.getCourses(student.getId()));
+			  
+			  return "student";
+		  }
+		  if(loggedinUser.getUser().getRole().equals("TEACHER"))
+		  {
+			  Teachers teacher = teachersService.getTeacherByUserId(loggedinUser.getUser().getId());
+			  
+			  model.addAttribute("teacher", teacher);
+			  model.addAttribute("courses", courseService.getCourses());
+			  model.addAttribute("registeredCourses", teachersService.getCourses(teacher.getId()));
+			  
+			  return "teacher";
+		  }
+
+		  return "index";
 	  }
 	 
 

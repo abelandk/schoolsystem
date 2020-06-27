@@ -61,7 +61,7 @@ public class StudentController {
 	
 	@PostMapping("/student")
 	public String student(@RequestParam("id") int id, Model model, 
-			@ModelAttribute("selectedCourses") Courses courses) {
+			@ModelAttribute("selectCourses") Courses courses) {
 		
 		model.addAttribute("student", studentService.getStudent(id));
 		model.addAttribute("courses", courseService.getCourses());

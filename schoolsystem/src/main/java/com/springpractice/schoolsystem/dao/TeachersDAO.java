@@ -9,6 +9,7 @@ public interface TeachersDAO {
 
 	public List<Teachers> getAllTeachers();
 	public Teachers getTeacher(int id);
+	public Teachers getTeacherByUser(int userId);
 	public void setTeacher(Teachers teacher);
 	public List<Courses> getCourses(int id);
 	public void setCourses(Courses course, int id);

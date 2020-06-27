@@ -28,7 +28,6 @@
 			th:name="teacher_id" th:value="${teacher.id}"/>
 			<input class="form-control mb-4 col-2" type="submit" value="Register" />
 		</form>
-	</div>
 
 	<div align="center">
 		<h4>Registered Courses</h4>
@@ -36,6 +35,13 @@
 			<li class="list-group-item"
 				th:text="${courses.code} + '  ' + ${courses.name}"></li>
 		</ul>
+	</div>
+
+		<br>
+		<br>
+		<form class="form-group" th:action="@{/logout}" method="post">
+			<input class="btn btn-info col-2" type="submit" value="Logout" />
+		</form>
 	</div>
 </body>
 </html>

@@ -52,4 +52,10 @@ public class TeachersServiceImpl implements TeachersService {
 		
 	}
 
+	@Override
+	public Teachers getTeacherByUserId(int userId) {
+		
+		return dao.getTeacherByUser(userId);
+	}
+
 }

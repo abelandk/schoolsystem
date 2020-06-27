@@ -64,4 +64,14 @@ public class TeachersDAOImpl implements TeachersDAO {
 		teacher.setCourses(course);
 	}
 
+	@Override
+	@Transactional
+	public Teachers getTeacherByUser(int userId) {
+		
+		session = em.unwrap(Session.class);
+		Query<Teachers> teacher = session.createQuery("from Teachers where user_id = " + userId, Teachers.class);
+		
+		return teacher.getSingleResult();
+	}
+
 }
